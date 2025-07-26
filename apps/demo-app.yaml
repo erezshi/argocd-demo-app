@@ -11,13 +11,14 @@ spec:
     targetRevision: HEAD
     helm:
       releaseName: demo-app
+      valueFiles:
+        - ../../configs/demo-app-values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: demo
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-

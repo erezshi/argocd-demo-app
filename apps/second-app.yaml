@@ -11,6 +11,8 @@ spec:
     targetRevision: HEAD
     helm:
       releaseName: second-app
+      valueFiles:
+        - ../../configs/second-app-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: second
