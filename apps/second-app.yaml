@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: second-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/erezshi/argocd-demo-app.git
+    path: helm-chart
+    targetRevision: HEAD
+    helm:
+      releaseName: second-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: second
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
