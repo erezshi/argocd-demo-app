@@ -6,12 +6,16 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://airflow.apache.org
-    chart: airflow
-    targetRevision: 1.15.0   # pick stable version
+    repoURL: https://github.com/erezshi/argocd-demo-app.git
+    path: .
+    targetRevision: HEAD
     helm:
       valueFiles:
         - apps/airflow/airflow-values.yaml
+      chart: airflow
+      releaseName: airflow
+      repo: https://airflow.apache.org
+      targetRevision: 1.15.0
   destination:
     server: https://kubernetes.default.svc
     namespace: airflow
