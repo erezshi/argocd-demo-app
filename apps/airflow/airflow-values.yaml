@@ -1,0 +1,20 @@
+# Minimal Airflow config for local dev
+dags:
+  persistence:
+    enabled: false
+
+executor: "CeleryExecutor"
+
+redis:
+  enabled: true
+
+postgresql:
+  enabled: true
+
+workers:
+  replicas: 1
+
+web:
+  service:
+    type: NodePort
+    nodePort: 30080   # access Airflow UI at http://localhost:30080
